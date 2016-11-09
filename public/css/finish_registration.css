@@ -1,0 +1,17 @@
+.finish_regist_text {
+    margin-left: 30vw;
+}
+
+#finish_regist_title {
+    font-size: 36px;
+    line-height: 70px;
+}
+
+#finish_regist_content {
+    font-size: 16px;
+    margin-bottom: 40px;
+}
+
+#finish_regist_email {
+    margin-top: 5px;
+}

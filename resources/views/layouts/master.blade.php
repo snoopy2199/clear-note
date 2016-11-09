@@ -19,6 +19,7 @@
         <div id="main">
             @yield('main')
         </div>
+        <div id="blank"></div>
     </div>
     @include('layouts.partials.footer')
 </body>

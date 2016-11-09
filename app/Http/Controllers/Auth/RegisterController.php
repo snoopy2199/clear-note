@@ -2,61 +2,112 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\User;
 use App\Http\Controllers\Controller;
-use Request;
 use App\Facades\Mailer;
+use App\Models\User;
+use App\Models\Verification;
+use Request;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
-
-    /**
-     * Where to redirect users after login / registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
-
     /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return User
+     * @return array
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        //建立新使用者
+        $user = User::create([
             'email' => $data['email'],
-            'password' => bcrypt($data['password']),
         ]);
+
+        //產生驗證碼
+        $token = $this->generateRegisterToken();
+        Verification::create([
+            'user_id' => $user->id,
+            'token' => $token
+        ]);
+
+        $data = [
+            'id' => $user->id,
+            'token' => $token
+        ];
+
+        return $data;
     }
 
     public function register()
     {
         $request = Request::all();
-        Mailer::mail($request['email'], "Test Clear Note", "HiHi");
+        $user = $this->create($request);
+        Mailer::mail($request['email'], "Test Clear Note", $this->registerMailContent($user));
     }
 
+    public function activeUser($id, $token)
+    {
+        //先看有沒有這個id
+        $user = User::find($id);
 
+        if (is_null($user)) {
+            var_dump("no user");
+            return;
+        }
+
+        $checkToken = $this->checkToken($user, $token);
+
+        //token 沒過
+        if (!$checkToken) {
+            var_dump("something wrong");
+            return;
+        }
+
+        return View('finish_registration')
+            ->with('user', $user);
+    }
+
+    private function checkToken($user, $token)
+    {
+        $verification = $user->verification;
+
+        if (is_null($verification)) {
+            return false;
+        }
+
+        if ($verification->token === $token) {
+            return true;
+        }
+
+        // token不對或是認證過了
+        return false;
+    }
+
+    private function generateRegisterToken()
+    {
+        return hash_hmac('sha256', str_random(40), env('app_key'));
+    }
+
+    private function registerMailContent($user)
+    {
+        $url = "http://localhost:8000/activeUser/{$user['id']}/{$user['token']}";
+        return "<a href='{$url}'>click</a>";
+    }
+
+    public function registerProfile()
+    {
+        //要傳入id, password, name
+        $request = Request::all();
+        $password_hash = password_hash($request['password'], PASSWORD_DEFAULT);
+        $name = $request['name'];
+
+        $user = User::find($request['id']);
+        $user->password = $password_hash;
+        $user->name = $name;
+        $user->save();
+
+        $user->verification->delete();
+
+        return View('index');
+    }
 }
