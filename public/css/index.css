@@ -1,0 +1,55 @@
+#index_banner {
+    margin-top: -20px;
+    margin-left: -20px;
+    margin-right: -20px;
+    width: 100vw;
+    height: 500px;
+    opacity:0.8;
+}
+
+.index-section {
+    margin-top: 50px;
+}
+
+#cornell_note_title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 100px;
+}
+
+#cornell_note_part {
+    font-size: 20px;
+    line-height: 50px;
+    margin-top: 20px;
+}
+
+#index_feature {
+    width: 100vw;
+    font-size: 20px;
+    line-height: 60px;
+    margin-top: 90px;
+    margin-left: -20px;
+    padding-left: 40px;
+    background-color: lightsalmon;
+}
+
+#index_sign_up {
+    width: 100vw;
+    background-color: lightseagreen;
+    margin-top: 0px;
+    margin-left: -20px;
+    padding-top: 30px;
+    padding-left: 40vw;
+    padding-bottom: 50px;
+}
+
+#index_sign_up_title {
+    color: white;
+    font-size: 30px;
+    margin-left: 5vw;
+    margin-bottom: 20px;
+}
+
+#user_email {
+    width: 16vw;
+}

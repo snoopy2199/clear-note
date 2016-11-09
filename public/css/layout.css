@@ -1,0 +1,67 @@
+body {
+    margin: 0px;
+}
+
+#main {
+    padding: 20px;
+}
+
+#header {
+    height: 65px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: gray;
+}
+
+#header_title {
+    color: black;
+    font-family: 'Raleway', sans-serif;
+    font-size: 30px;
+    padding-top: 10px;
+    padding-left: 40px;
+}
+
+#header_title:hover {
+    text-decoration: none;
+}
+
+#footer {
+    background-color: lightgray;
+    height: 50px;
+    padding: 15px;
+}
+
+.header-link {
+    font-size: 18px;
+    padding-top: 15px;
+}
+
+.header-link, .footer-word, .footer-link {
+    color: gray;
+}
+
+.header-link:hover, .footer-link:hover {
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
+}
+
+#header_login {
+    padding-left: 50px;
+}
+
+#header_sign_up {
+    color: tomato;
+}
+
+#header_sign_up:hover {
+    color: red;
+}
+
+#footer_about, #footer_comment, #footer_help {
+    padding-left: 40px;
+}
+
+#content {
+    min-height: 100vh;
+}
