@@ -1,5 +1,5 @@
 <div id="header">
-    <div class="row">
+    <div id="header_main" class="row">
         <a id="header_title" class="col-md-2" href="\">
             Clear Note
         </a>

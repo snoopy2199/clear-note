@@ -13,6 +13,10 @@ body {
     border-bottom-color: gray;
 }
 
+#header_main {
+    margin-right: 0px;
+}
+
 #header_title {
     color: black;
     font-family: 'Raleway', sans-serif;
@@ -46,12 +50,13 @@ body {
     text-decoration: none;
 }
 
-#header_login {
-    padding-left: 50px;
+#header_login{
+    padding-left: 60px;
 }
 
 #header_sign_up {
     color: tomato;
+    padding-left: 35px
 }
 
 #header_sign_up:hover {
