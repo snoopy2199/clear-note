@@ -12,25 +12,30 @@ Clear Note is a online Cornell note service
 
 ## Getting Started
 Before you begin, please make sure that you have installed **php**, **composer**, and **git**
+
 1. Download this project
-```
-git clone https://github.com/snoopy2199/clear-note.git
-```
+    ```
+    git clone https://github.com/snoopy2199/clear-note.git
+    ```
+
 2. Composer install
-```
-conposer install
-```
+    ```
+    composer install
+    ```
+
 3. Make your own env file
-```
-cp .env.example .env
-php artisan key:generate
-vim .env
-```
+    ```
+    cp .env.example .env
+    php artisan key:generate
+    vim .env
+    ```
+
 4. Migrate database
-```
-php artisan migrate
-```
+    ```
+    php artisan migrate
+    ```
+
 5. Launch
-```
-php artisan serve
-```
+    ```
+    php artisan serve
+    ```
