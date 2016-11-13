@@ -15,9 +15,14 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::post('/login', 'Auth\LoginController@login');
+Route::post('/logout', 'Auth\LoginController@logout');
+
 Route::get('/about', function () {
     return view('index');
 });
+
+Route::get('/book', 'BookController@showBook');
 
 Route::get('/help', 'HelpController@showHelp');
 

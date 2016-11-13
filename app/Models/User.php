@@ -12,4 +12,9 @@ class User extends Model
     {
         return $this->hasOne('App\Models\Verification');
     }
+
+    public function books()
+    {
+        return $this->hasMany('App\Models\Book');
+    }
 }
