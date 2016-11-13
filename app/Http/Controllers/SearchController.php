@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller as BaseController;
 
-class HelpController extends BaseController
+class SearchController extends BaseController
 {
-    public function showHelp()
+    public function search()
     {
 
     }

@@ -1,50 +1,40 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Facades\Mailer;
+use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Http\Request;
+use app\facades\Mailer;
 use App\Models\User;
 use App\Models\Verification;
-use Request;
 
-class RegisterController extends Controller
+class RegisterController extends BaseController
 {
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return array
-     */
-    protected function create(array $data)
+    public function register(Request $request)
     {
-        //建立新使用者
+        $email = $request->input('email');
         $user = User::create([
-            'email' => $data['email'],
+            'email' => $email,
         ]);
 
-        //產生驗證碼
-        $token = $this->generateRegisterToken();
-        Verification::create([
-            'user_id' => $user->id,
-            'token' => $token
-        ]);
+        $token = Mailer::sendVerificationMail($email, "Test Clear Note", "{{VerificationToken}}");
 
-        $data = [
-            'id' => $user->id,
-            'token' => $token
-        ];
-
-        return $data;
+        if ($token) {
+            Verification::create([
+                'user_id' => $user->id,
+                'token' => $token
+            ]);
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public function register()
-    {
-        $request = Request::all();
-        $user = $this->create($request);
-        Mailer::mail($request['email'], "Test Clear Note", $this->registerMailContent($user));
+    public function activateUser($id, $token) {
+
     }
 
+    /*
     public function activeUser($id, $token)
     {
         //先看有沒有這個id
@@ -83,16 +73,6 @@ class RegisterController extends Controller
         return false;
     }
 
-    private function generateRegisterToken()
-    {
-        return hash_hmac('sha256', str_random(40), env('app_key'));
-    }
-
-    private function registerMailContent($user)
-    {
-        $url = "http://localhost:8000/activeUser/{$user['id']}/{$user['token']}";
-        return "<a href='{$url}'>click</a>";
-    }
 
     public function registerProfile()
     {
@@ -109,5 +89,5 @@ class RegisterController extends Controller
         $user->verification->delete();
 
         return View('index');
-    }
+    }*/
 }

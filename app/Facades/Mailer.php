@@ -6,7 +6,17 @@ use PHPMailer;
 
 class Mailer
 {
-    public static function mail($address, $subject, $body)
+    public static function sendVerificationMail($address, $subject, $body)
+    {
+        $verificationToken = self::generateVerificationToken();
+        str_replace("{{VerificationToken}}", $verificationToken, $body);
+
+        $isSuccess = self::sendMail($address, $subject, $body);
+
+        return $isSuccess ? $verificationToken : false;
+    }
+
+    private static function sendMail($address, $subject, $body)
     {
         $mail = new PHPMailer;
         $mail->isSMTP();                                      // Set mailer to use SMTP
@@ -27,5 +37,10 @@ class Mailer
         } else {
             return true;
         }
+    }
+
+    private static function generateVerificationToken()
+    {
+        return hash_hmac('sha256', str_random(40), env('app_key'));
     }
 }
