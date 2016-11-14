@@ -8,10 +8,10 @@ class BookshelfController extends BaseController
 {
     public function showBookshelf()
     {
-
+        return view('index');
     }
 
-    public function addBook()
+    public function createBook()
     {
 
     }

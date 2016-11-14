@@ -11,11 +11,6 @@ class UserController extends BaseController
 
     }
 
-    public function showResetPassword()
-    {
-
-    }
-
     public function updateUser()
     {
 

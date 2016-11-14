@@ -11,22 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::pattern('id', '[0-9]+');
 
-Route::post('/login', 'Auth\LoginController@login');
-Route::post('/logout', 'Auth\LoginController@logout');
+Route::get('/', 'BookshelfController@showBookshelf');
+
+Route::get('/user_active/{id}/{token}', 'RegisterController@activateUser');
+Route::get('/forget_password/{id}/{token}', 'ForgetPasswordController@showResetPassword');
+
+Route::get('/note/{note_hash}', 'NoteController@showNote');
+
+Route::get('/trash', 'TrashController@showTrash');
+
+Route::get('/setting', 'UserController@showSetting');
 
 Route::get('/about', function () {
-    return view('index');
+    return view('about');
 });
 
-Route::get('/book', 'BookController@showBook');
-
-Route::get('/help', 'HelpController@showHelp');
-
-Route::post('/register', 'Auth\RegisterController@register');
-Route::get('/activeUser/{id}/{token}', 'Auth\RegisterController@activeUser');
-Route::post('/register/profile', 'Auth\RegisterController@registerProfile');
-
+Route::get('/help', 'HelpController@showHelps');
+Route::get('/help/{id}/{title?}', 'HelpController@showHelp');

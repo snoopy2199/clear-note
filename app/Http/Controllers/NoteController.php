@@ -11,7 +11,7 @@ class NoteController extends BaseController
 
     }
 
-    public function addNote()
+    public function createNote()
     {
 
     }
