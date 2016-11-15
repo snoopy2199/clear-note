@@ -3,22 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends BaseController
 {
-    public function login(Request $request)
+    public function login()
     {
-        $email = $request->input('email');
-        $password = $request->input('password');
-        $remember = $request->input('$remember');
+        $request = Request::all();
 
-        if (Auth::attempt(['email' => $email, 'password' => $password], $remember)) {
-            return redirect()->intended('/bookshelf');
+        $email = $request['email'];
+        $password = $request['password'];
+        $remember_me = true;
+
+        if (Auth::attempt(['email' => $email, 'password' => $password], $remember_me)) {
+            return redirect('/');
         }
-
-        return view('index', ['error' => '登入失敗']);
     }
 
     public function logout()

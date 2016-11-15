@@ -25,7 +25,7 @@ Route::get('/trash', 'TrashController@showTrash');
 Route::get('/setting', 'UserController@showSetting');
 
 Route::get('/about', function () {
-    return view('about');
+    return redirect('/');
 });
 
 Route::get('/help', 'HelpController@showHelps');

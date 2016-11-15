@@ -3,10 +3,16 @@
         <a id="header_title" class="col-md-2" href="\">
             Clear Note
         </a>
-        <div id="header_login" class="col-md-1 col-md-offset-8 header-link"
-             data-toggle="modal" data-target="#loginModal">
-            登入
-        </div>
+        @if (!Auth::check())
+            <div id="header_login" class="col-md-1 col-md-offset-8 header-link"
+                 data-toggle="modal" data-target="#loginModal">
+                登入
+            </div>
+        @else
+            <div id="header_logout" class="col-md-1 col-md-offset-8 header-link">
+                登出
+            </div>
+        @endif
         <a id="header_sign_up" class="col-md-1 header-link"
            data-toggle="modal" data-target="#registrationModal">
             註冊
@@ -25,7 +31,7 @@
                     <h4 class="modal-title" id="loginModalLabel">登入</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="api/login" method="post" class="form-horizontal" role="form">
+                    <form action="/api/login" method="post" class="form-horizontal" role="form">
                         <div class="form-group">
                             <label for="login_inputEmail" class="col-sm-2 control-label">電子郵件</label>
                             <div class="col-sm-9">

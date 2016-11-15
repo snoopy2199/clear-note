@@ -1,6 +1,6 @@
 <?php
 
-namespace app\facades;
+namespace App\Facades;
 
 use PHPMailer;
 
@@ -9,7 +9,7 @@ class Mailer
     public static function sendVerificationMail($address, $subject, $body)
     {
         $verificationToken = self::generateVerificationToken();
-        str_replace("{{VerificationToken}}", $verificationToken, $body);
+        $body = str_replace("{{VerificationToken}}", $verificationToken, $body);
 
         $isSuccess = self::sendMail($address, $subject, $body);
 
