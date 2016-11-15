@@ -39,15 +39,19 @@
     margin-top: 0px;
     margin-left: -20px;
     padding-top: 80px;
-    padding-left: 40vw;
+    padding-left: 35vw;
     padding-bottom: 100px;
 }
 
 #index_sign_up_title {
     color: white;
     font-size: 30px;
-    margin-left: 5vw;
+    margin-left: 10vw;
     margin-bottom: 20px;
+}
+
+#index_regist_group {
+    margin-right: 0px;
 }
 
 #user_email {

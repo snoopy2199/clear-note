@@ -3,6 +3,7 @@
 @section('title', 'Clear Note')
 
 @section('script')
+    <script src="{{ URL::asset('js/finish_registration.js') }}"></script>
 @endsection
 
 @section('css')

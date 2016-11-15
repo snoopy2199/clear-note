@@ -38,7 +38,16 @@
     </div>
     <div id="index_sign_up" class="index-section">
         <div id="index_sign_up_title">馬上體驗</div>
-        <input id="user_email" type="text" name="email" placeholder="email">
-        <button onclick="register()">註冊</button>
+        <form id="index_regist_form" class="form-horizontal" role="form">
+            <div id="index_regist_group" class="form-group">
+                <div class="col-sm-5">
+                    <input id="index_regist_inputEmail" type="email" name="email"
+                           class="form-control"  placeholder="電子郵件" required>
+                </div>
+                <button id="index_regist_button" type="submit" class="btn btn-default col-sm-1">
+                    註冊
+                </button>
+            </div>
+        </form>
     </div>
 @endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use app\facades\Mailer;
 use App\Models\User;
 use App\Models\Verification;
@@ -12,7 +13,7 @@ class RegisterController extends BaseController
 {
     public function register(Request $request)
     {
-        $email = $request->input('email');
+        /*$email = $request->input('email');
         $user = User::create([
             'email' => $email,
         ]);
@@ -27,7 +28,12 @@ class RegisterController extends BaseController
             return true;
         } else {
             return false;
-        }
+        }*/
+        /*return response()->json([
+            'name' => 'Abigail',
+            'state' => 'CA'
+        ]);*/
+        return Response::json(['msg' => 'hi'], 409);
     }
 
     public function activateUser($id, $token) {

@@ -2,6 +2,10 @@ body {
     margin: 0px;
 }
 
+textarea {
+    resize: none;
+}
+
 #main {
     padding: 20px;
 }
@@ -11,6 +15,12 @@ body {
     border-bottom-style: solid;
     border-bottom-width: 1px;
     border-bottom-color: gray;
+}
+
+#footer {
+    background-color: lightgray;
+    height: 50px;
+    padding: 15px;
 }
 
 #header_main {
@@ -27,12 +37,6 @@ body {
 
 #header_title:hover {
     text-decoration: none;
-}
-
-#footer {
-    background-color: lightgray;
-    height: 50px;
-    padding: 15px;
 }
 
 .header-link {
@@ -63,10 +67,6 @@ body {
     color: red;
 }
 
-#footer_about, #footer_comment, #footer_help {
-    padding-left: 40px;
-}
-
 #content {
     min-height: 100vh;
     margin-bottom: -50px;
@@ -75,6 +75,10 @@ body {
 #blank {
     width: 100vw;
     height: 50px;
+}
+
+#footer_about, #footer_comment, #footer_help {
+    padding-left: 40px;
 }
 
 #footer_github {
@@ -86,4 +90,21 @@ body {
 
 #footer_github:hover {
     opacity: 1;
+}
+
+#feedback_star_group {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    font-size: 26px;
+    color: gold;
+}
+
+#feedback_star_group span {
+    margin-left: 3px;
+}
+
+#feedback_btn {
+    margin-bottom: 5px;
+    margin-left: 60px;
 }

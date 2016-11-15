@@ -1,19 +1,11 @@
-function register() {
-    var email = $('#user_email').val().trim();
+$(document).ready(function(){
+    // for register
+    $("#index_regist_form").submit( function(event) {
+        var email = $('#index_regist_inputEmail').val().trim();
+        // this function in layout.js
+        register(email);
 
-    if (!email) {
-        alert('不可為空');
-        return;
-    }
-
-    $.ajax({
-        url: '/register',
-        type: 'POST',
-        data: {
-            email: email
-        },
-        success: function(response) {
-            alert('註冊成功，請至信箱認證');
-        }
+        // don't do submit
+        event.preventDefault();
     });
-}
+});
