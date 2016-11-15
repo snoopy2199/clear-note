@@ -15,6 +15,9 @@ Route::pattern('id', '[0-9]+');
 
 Route::get('/', 'BookshelfController@showBookshelf');
 
+Route::post('/login', 'AuthController@login');
+Route::get('/logout', 'AuthController@logout');
+
 Route::get('/user_active/{id}/{token}', 'RegisterController@activateUser');
 Route::get('/forget_password/{id}/{token}', 'ForgetPasswordController@showResetPassword');
 

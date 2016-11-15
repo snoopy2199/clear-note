@@ -11,9 +11,6 @@
 |
 */
 
-Route::post('/login', 'AuthController@login');
-Route::get('/logout', 'AuthController@logout');
-
 Route::post('/user/register', 'RegisterController@register');
 Route::post('/user/forget_password', 'ForgetPasswordController@forgetPassword');
 Route::post('/user/update', 'UserController@updateUser');

@@ -9,8 +9,10 @@
                 登入
             </div>
         @else
-            <div id="header_logout" class="col-md-1 col-md-offset-8 header-link">
-                登出
+            <div id="header_out" class="col-md-1 col-md-offset-8 header-link">
+                <a href="/logout">
+                    登出
+                </a>
             </div>
         @endif
         <a id="header_sign_up" class="col-md-1 header-link"
@@ -31,7 +33,8 @@
                     <h4 class="modal-title" id="loginModalLabel">登入</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="/api/login" method="post" class="form-horizontal" role="form">
+                    <form action="/login" method="post" class="form-horizontal" role="form">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="form-group">
                             <label for="login_inputEmail" class="col-sm-2 control-label">電子郵件</label>
                             <div class="col-sm-9">
