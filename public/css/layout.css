@@ -67,6 +67,17 @@ textarea {
     color: red;
 }
 
+#header_list {
+    cursor: pointer;
+    margin-top: 15px;
+    margin-left: 25px;
+    list-style-type: none;
+}
+
+#dropdown_list {
+    margin-left: -100px;
+}
+
 #content {
     min-height: 100vh;
     margin-bottom: -50px;

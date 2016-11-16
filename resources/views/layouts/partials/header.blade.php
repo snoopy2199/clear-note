@@ -3,22 +3,42 @@
         <a id="header_title" class="col-md-2" href="\">
             Clear Note
         </a>
-        @if (!Auth::check())
+        @if (Auth::check())
+            <div class="col-md-1 col-md-offset-9">
+                <li id="header_list">
+                    <div class="dropdown">
+                        <div id="dropdown_btn" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                            @if (Auth::user()->image)
+                                <img id="user_icon" src='{{ "data:image/png;base64, " }}' height="35">
+                            @else
+                                <img id="user_icon" src='{{ asset('img/image_user.png') }}' height="35">
+                            @endif
+                            <span class="caret"></span>
+                        </div>
+                        <ul id="dropdown_list" class="dropdown-menu" role="menu" aria-labelledby="dropdown_btn">
+                            <li role="presentation">
+                                <a href="/" role="menuitem" class="dropdown_item">我的書架</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="/setting" role="menuitem" class="dropdown_item">個人設定</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="/logout" role="menuitem" class="dropdown_item">登出</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </div>
+        @else
             <div id="header_login" class="col-md-1 col-md-offset-8 header-link"
                  data-toggle="modal" data-target="#loginModal">
                 登入
             </div>
-        @else
-            <div id="header_out" class="col-md-1 col-md-offset-8 header-link">
-                <a href="/logout">
-                    登出
-                </a>
-            </div>
+            <a id="header_sign_up" class="col-md-1 header-link"
+               data-toggle="modal" data-target="#registrationModal">
+                註冊
+            </a>
         @endif
-        <a id="header_sign_up" class="col-md-1 header-link"
-           data-toggle="modal" data-target="#registrationModal">
-            註冊
-        </a>
     </div>
 
     <!-- Login Modal -->
