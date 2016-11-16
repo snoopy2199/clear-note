@@ -6,6 +6,7 @@ var nowNoteEle;
 
 var nowBookId;
 var nowNoteId;
+var nowNoteHashId;
 
 $(document).ready(function(){
     $("#create_book_form").submit( function(event) {
@@ -97,4 +98,9 @@ function selectNote(noteId, noteEleId) {
     nowNoteId = noteId;
     nowNoteEle = $('#' + noteEleId);
     nowNoteEle.addClass("note-selected");
+    nowNoteHashId = nowNoteEle.data("note-hashid");
+}
+
+function startNote() {
+    window.location.href = "http://localhost:8000/note/" + nowNoteHashId;
 }

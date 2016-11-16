@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Hashids\Hashids;
 
 class Note extends Model
 {
@@ -16,6 +17,13 @@ class Note extends Model
         'invalided_at',
         'deleted_at'
     ];
+
+    public function hashId()
+    {
+        $hashids = new Hashids('Clear Note', 6);
+        $hashid = $hashids->encode($this->id);
+        return $hashid;
+    }
 
     public function book()
     {

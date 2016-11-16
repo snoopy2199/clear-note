@@ -34,6 +34,7 @@
                 <div id="book_{{ $loop->index }}_content" style="display: none;">
                     @foreach ($book->notes as $note)
                         <div id="note_{{ $loop->parent->index}}_{{ $loop->index }}" class="note_item"
+                             data-note-hashid="{{ $note->hashId() }}"
                              onclick="selectNote({{ $note->id }}, 'note_{{ $loop->parent->index}}_{{ $loop->index }}')">
                             <div class="note_icon">
                                 <i class="fa fa-file-text-o" aria-hidden="true"></i>
@@ -56,7 +57,7 @@
         </div>
         <div class="col-md-1">
             <div id="note_btn_group" style="display: none;">
-                <button type="button" class="btn btn-warning note-btn">開啟</button>
+                <button type="button" class="btn btn-warning note-btn" onclick="startNote()">開啟</button>
                 <button type="button" class="btn btn-default note-btn">修改</button>
                 <button type="button" class="btn btn-default note-btn">刪除</button>
             </div>
