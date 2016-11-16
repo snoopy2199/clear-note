@@ -98,7 +98,7 @@
                     <button type="button" class="close" data-dismiss="modal">
                         <span aria-hidden="true">&times;</span><span class="sr-only">關閉</span>
                     </button>
-                    <h4 class="modal-title" id="registrationModal">註冊</h4>
+                    <h4 class="modal-title" id="registrationModalLabel">註冊</h4>
                 </div>
                 <div class="modal-body">
                     <form id="regist_form" class="form-horizontal" role="form">

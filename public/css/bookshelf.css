@@ -1,0 +1,44 @@
+#book_content_field {
+    padding-left: 60px;
+}
+
+.book_item:hover {
+    background-color: darkgray;
+    cursor: pointer;
+}
+
+.book_add {
+    text-align: center;
+}
+
+.note_item {
+    display: inline-block;
+    width: 90px;
+    height: 110px;
+    text-align: center;
+    padding: 10px;
+}
+
+.note_item:hover {
+    background-color: darkgray;
+    cursor: pointer;
+}
+
+.note_icon {
+    font-size: 40px;
+}
+
+.note-selected,
+.book-selected {
+    background-color: lightblue;
+}
+
+.book-btn {
+    margin-left: 35px;
+    width: 100px;
+}
+
+.note-btn {
+    width: 100px;
+    margin-top: 15px;
+}
